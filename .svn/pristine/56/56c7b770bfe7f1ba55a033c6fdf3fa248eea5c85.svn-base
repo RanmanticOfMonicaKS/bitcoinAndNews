@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>社区</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        .community_item {
+            height: 200px;
+            background-color: #020202;
+            border: 1px solid #666;
+            line-height: 40px;
+            margin-bottom: 10px;
+            padding: 0 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .community_item_center {
+            padding-top: 10px;
+            font-size: 16px;
+            text-indent: 2em;
+            line-height: 20px;
+            height: 100px;
+            color:#ccc;
+        }
+        .community_item_bot {
+            line-height: 40px;
+            height: 40px;
+            overflow: hidden;
+        }
+        .community_item_tp {
+            color:#f79604;
+
+            font-size: 18px;
+            line-height: 40px;
+            height: 40px;
+            clear: both;
+        }
+        .community_item i {
+            margin-right: 5px;
+        }
+        .fa.fa-phone {
+        color:green;
+        }
+        .submit_btn {
+            padding: 0 5px;
+            border-radius: 5px;
+            box-shadow:-3px 1px 0 #666;
+            color:#fff;
+        }
+        .submit_btn.submit {
+            background-color: #f79604;
+
+        }
+        .submit_btn.in {
+            background-color: green;
+
+        }
+    </style>
+</head>
+<body>
+        <div class="header">
+                <div class="title">
+                    社区
+                </div>
+        </div>
+        <ul class="main community">
+            <li class="community_item">
+                <div class="community_item_tp clearfix">
+                    <div class="com_title b_left">
+                        <i class=" fa fa-btc"></i><span>武汉区块链俱乐部</span>
+                    </div>
+                    <div class="com_builder b_right">
+                        <i class="fa fa-user"></i>
+                        <span>那尼拓</span>
+                    </div>
+                </div>
+                <div class="community_item_center">
+                    武汉区块链俱乐部致力于区块链技术的研究和普及
+                </div>
+                <div class="community_item_bot">
+                        <div class="builder-phone b_left">
+                        <i class="fa fa-phone"></i> <span>18512342231</span>
+                            </div>
+                            <div class="submit_btn b_right in">点击进入</div>
+                </div>
+            </li>
+            <li class="community_item">
+                <div class="community_item_tp clearfix">
+                    <div class="com_title b_left">
+                        <i class=" fa fa-btc"></i><span>武汉区块链俱乐部</span>
+                    </div>
+                    <div class="com_builder b_right">
+                        <i class="fa fa-user"></i>
+                        <span>那尼拓</span>
+                    </div>
+                </div>
+                <div class="community_item_center">
+                    武汉区块链俱乐部致力于区块链技术的普及和探讨
+                </div>
+                <div class="community_item_bot">
+                        <div class="builder-phone b_left">
+                            <i class="fa fa-phone"></i> <span>   18512342</span>231
+                            </div>
+                            <div class="submit_btn b_right submit">申请加入</div>
+                </div>
+            </li>
+            <li class="community_item">
+                    <div class="community_item_tp clearfix">
+                        <div class="com_title b_left">
+                            <i class=" fa fa-btc"></i><span>武汉区块链俱乐部</span>
+                        </div>
+                        <div class="com_builder b_right">
+                            <i class="fa fa-user"></i>
+                            <span>那尼拓</span>
+                        </div>
+                    </div>
+                    <div class="community_item_center">
+                        武汉区块链俱乐部致力于区块链技术的普及和探讨
+                    </div>
+                    <div class="community_item_bot">
+                        <div class="builder-phone b_left">
+                         <i class="fa fa-phone"></i> <span>  185123422</span>31
+                        </div>
+                        <div class="submit_btn b_right submit">申请加入</div>
+                    </div>
+                </li>    
+        </ul>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function(){
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+    }
+        
+</script>
+</html>

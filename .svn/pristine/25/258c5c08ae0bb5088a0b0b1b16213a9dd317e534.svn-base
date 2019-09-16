@@ -1,0 +1,32 @@
+html,body {
+  height: 100%;
+  background-color: #202020;
+  color:#eee;
+}
+header {
+  box-sizing: content-box;
+}
+
+.b_flex  {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+  justify-content: center;
+  justify-content: -webkit-center;
+
+}
+.b_left {
+  float: left;
+}
+.b_right {
+  float: right;
+}
+
+/* 必要的时候滚动 ， 不在fixmain统一采用win+frame布局 */
+main {
+  padding: 5px;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}

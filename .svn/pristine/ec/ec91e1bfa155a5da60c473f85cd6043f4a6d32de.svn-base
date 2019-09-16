@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>社区</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        .bbs_con {
+            padding: 0 20px;
+            height: 40px;
+            line-height: 40px;
+            color:#020202;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rbga(0,0,0,.3);
+            background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 100%);
+            margin-bottom: 10px;
+        }
+        .main {
+            position: relative;
+           
+             /* 给发言区留位置 */
+        }
+        /* .bbs_con:nth-of-type(2n) {
+            float: left;
+        }
+        .bbs_con:nth-of-type(2n) {
+            float: right;
+        } */
+        .userInput {
+            display: sticky;
+            display: -webkit-sticky;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin-bottom: 10px;
+            
+        }
+        .input {
+            float: left;
+            display: block;
+            width: 80%;
+            height: 100%;
+            background-color: #fbc2eb;
+            color:#020202;
+            text-align-last: left;
+            padding-left: 20px;
+            border-radius: 5px 0px 0 5px;
+        }
+        .input_btn {
+            float: right;
+            width: 20%;
+            height: 100%;
+            background-color:#a6c1ee ;
+            color:#fff;
+            text-align: center;
+            border-radius: 0px 5px 5px 0;
+
+        }
+    </style>
+</head>
+<body>
+        <div class="header">
+                <div class="title">
+                    <span class="tip">社区</span>
+                    <i class="fa fa-arrow-left " tapmode onclick="api.closeWin();"></i>
+                </div>
+            </div>
+            <ul class="main bbs">
+                <!-- <li class="bbs_item">
+                    <span class="b_title">
+                        张三
+                    </span>
+                    <div>
+                        <span class="bbs_con">
+                            232 
+                        </span>               
+                    </div>
+                </li>
+                <li class="bbs_item">
+                    <span class="b_title">
+                        张三
+                    </span>
+                    <div class="bbs_con">
+
+                    </div>
+                </li>
+                <li class="bbs_item">
+                    <span class="b_title">
+                        张三
+                    </span>
+                    <div class="bbs_con">
+                        2332
+                    </div>
+                </li>
+                <li class="bbs_item">
+                    <span class="b_title">
+                        张三
+                    </span>
+                    <div class="bbs_con">
+                        323
+                    </div>
+                </li> -->
+                <div class="userInput">
+                    <input class="input" placeholder="请输入您要发送的内容">
+                    <div class="input_btn" tapmode onclick="submitB();">
+                        发送
+                    </div>
+                </div>
+            </ul>
+</body>
+<script id="main" type="text/template">
+    {{~ it:value:index}}
+    <li class="bbs_item">
+            <span class="b_title">
+                {{= value.username}}：
+            </span>
+            <div>
+                <span class="bbs_con">
+                    {{= value.bbscon}}
+                </span>               
+            </div>
+        </li>
+        {{~}}
+</script>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function(){
+        
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+        comDetailTemp();
+        let comname = ($api.getStorage(api.winName) || {})[0]['comname'];
+        console.log(JSON.stringify(comname)+'-----'+JSON.stringify(api.winName));
+        if(comname) $('.tip').text(comname);
+
+    }
+        const comDetailTemp = () => {
+            let id = api.pageParam.id;
+            console.log(JSON.stringify(id));
+            
+            let url = b_url + 'bitcoin/getBbs.bq';
+            let data = {
+                body:{
+                    bq_param:{
+                        id
+                    }
+                }
+            }
+            b_data_page(url,data);
+        }
+
+        const submitB = () => {
+            console.log('发送------------');
+            
+            let b_uname = ($api.getStorage('b_uInfo') || {})['b_uname'];
+            console.log(JSON.stringify(b_uname));
+            
+            if(!b_uname) {
+               
+                return  api.confirm({
+                    title: '您还没有登录，登录后可发言',
+                    msg: '是否立即登录？',
+                    buttons:['确定', '取消']
+                },function(ret,err){
+                    if(ret.buttonIndex == 1){
+                        console.log('去登录');
+                        api.openWin({
+                            name: 'b_login',
+                            url: 'b_login.html',
+                        });
+                    }
+                });
+            }
+
+            
+            let text = $('.input').val();
+            let str = '<li class="bbs_item">'+
+                      '  <span class="b_title">'+
+                            b_uname+'：'+
+                       '</span>'
+            '<div>'+
+                '<span class="bbs_con">'+
+                        text+
+                '</span> '      +        
+            '</div>'+
+        '</li>';
+        $('.main').append(str);
+        }
+</script>
+</html>

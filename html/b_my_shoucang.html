@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>我的收藏</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        /* 新闻部分 */
+        .news_knowledge {
+            position: relative;
+            padding: 10px;
+            height: 100px;
+            background-color: #020202;
+            margin-bottom: 10px;
+            box-sizing: content-box;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .news_knowledge_l {
+            position: absolute;
+            left: 10;
+            height: 100%;
+            width: 100%;
+        }
+
+        .news_knowledge_r {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 40%;
+        }
+
+        .news_knowledge_r img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .news_knowledge_l_t {
+            position: absolute;
+            top: 0;
+            font-size: 14px;
+        }
+
+        .news_knowledge_l_b {
+            position: absolute;
+            bottom: 20px;
+            font-size: 12px;
+            width: 90%;
+        }
+
+        .b_name,
+        .b_pblish_time {
+            border-radius: 2px;
+            border: 1px solid #f79604;
+            color: #f79604;
+            padding: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">
+            我的收藏
+            <i class="fa fa-arrow-left " tapmode onclick="api.closeWin();"></i>
+        </div>
+    </div>
+    <div class="main">
+
+    </div>
+</body>
+<script id="main" type="text/template">
+    {{~ it:value:index}}
+    <div class="news_knowledge" data-index="{{= value.id}}">
+            <div class="news_knowledge_l">
+                <div class="news_knowledge_l_t"> {{= value.b_news_title}} </div>
+                <div class="news_knowledge_l_b">
+                    <div class="b_name b_left">{{= value.b_news_publish_name}}</div>
+                    <div class="b_pblish_time b_right">{{= value.b_news_publish_time}} </div>
+                </div>
+            </div>
+
+        </div>
+        {{~}}
+</script>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function () {
+        api.parseTapmode();
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+        shoucangTemp();
+        console.log(api.winName);
+        clickNews();
+    }
+    const shoucangTemp = () => {
+        let url = b_url + 'bitcoin/getNews.bq';
+        let data = {
+            body: {
+                bq_param: {
+
+                }
+            }
+        }
+        b_data_page(url, data);
+    }
+    // 点击每一条新闻
+    const clickNews = () => {
+        $('.main').on('click', '.news_knowledge', function () {
+            let id = $(this).data('index');
+            openDetailNews(id);
+        })
+    }
+    1
+</script>
+
+</html>

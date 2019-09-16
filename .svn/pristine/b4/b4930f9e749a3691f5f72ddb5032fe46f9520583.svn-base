@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>详情页</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+    .b_data_box {
+        height: 120px;
+        background-color: pink;
+    }
+    .b_data_box li {
+        width: 20%;
+        height: 100%;
+        
+    }
+    .b_data_box li.first {
+        padding-top: 20px;
+        
+    }
+    .b_box {
+
+        text-align: center;
+        line-height: 80px;
+        width: 90%;
+        height: 80px;
+        background-color: #fff;
+        padding-top: 10px;
+        box-sizing: border-box;
+    }
+    </style>
+</head>
+<body>
+        <div class="header">
+                <div class="title">
+                    行情详情
+                    <i class="fa fa-arrow-left "></i>
+                </div>
+        </div>
+        <div class="main">
+            <span class="b_title">
+                详细数据
+            </span>
+            <ul class="b_data_box b_flex_sa">
+                <li>
+                    <div class="b_box">
+                        BTC
+                    </div>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/swiper.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function(){
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+    }
+        
+</script>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        .b_swiper {
+            margin-bottom: 10px;
+        }
+        .swiper-slide {
+            position: relative;
+            border-radius: 10px;
+            float: left;
+        }
+        .swiper-slide  img {
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+        }
+        .swiper-slide .tips {
+            position: absolute;
+            padding-left: 10px;
+            width: 100%;
+            height: 30px;
+            bottom: 3px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color:#fff;
+            text-align: left;
+            line-height: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: 10px;
+        left: 0;    
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #f79604;
+    }
+    .swiper-pagination-bullets {
+        text-align: right;
+        padding-right: 10px;
+    }
+
+
+    .b_market_con {
+        margin-bottom: 10px;
+        height: 350px;
+        padding: 10px;
+    }
+    .b_market_con >li {
+        position: relative;
+        padding: 3px;
+        width: 30%;
+        height: 100px;
+        border: 1px solid #666;
+        border-radius: 5px;
+        background-color: #020202;
+        font-size: 12px;
+        text-align: center;
+        line-height: 20px;
+        
+    }
+    .b_market_hd {
+        height: 30px;
+        border-radius: 5px 5px 0 0 ;
+        text-align: center;
+        font-size: 12px;
+    }
+    .b_des {
+        font-size: 10px;
+    }
+    .b_name {
+        color:#fff;
+        font-weight: 700;
+    }
+    .b_des {
+        color:#ccc;
+    }
+    .b_market_footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 0 0 5px 5px;
+        font-size: 16px;
+        width: 100%;
+    }
+    .b_market_footer.red {
+        background-color: red;
+    }
+    .b_market_footer.green {
+        background-color: green;
+    }
+    .b_currentPriceD {
+        font-size: 18px;
+    }
+
+    .b_currentPriceY {
+        color:#ccc;
+    }
+    </style>
+</head>
+
+<body>
+        <div class="header">
+                <div class="title">
+                    首页
+                </div>
+        </div>
+    <section class="main">
+        <div class="swiper-container b_swiper">
+            <div class="swiper-wrapper clearfix">
+                <div class="swiper-slide " tapmode data-index='1'> 
+                    <img src="../image/home_swiper_1.png" alt=""> 
+                    <div class="tips">究竟什么是区块链？</div>                   
+                </div>
+                <div class="swiper-slide " tapmode data-index='2'> 
+                    <img src="../image/home_swiper_2.jpg" alt=""> 
+                    <div class="tips">为什么数字货币基于区块链技术受到如此关注？</div>
+                </div>
+                <div class="swiper-slide " tapmode data-index='3'> 
+                    <img src="../image/home_swiper_3.jpg" alt=""> 
+                    <div class="tips">比特币的不该如此神秘...</div>
+                </div>
+            </div>
+            <div class="swiper-pagination b_swiper_pagination"></div>
+        </div>
+        <div class="b_market">
+            <span class="b_title">
+                货币行情
+            </span>
+            <ul class="b_market_con b_flex">
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer green">
+                        -0.11%
+                    </div>
+                </li>
+                <li class="b_item" tapmode data-index="1">
+                    <div class="b_market_hd">
+                        <span class="b_name">
+                            HT
+                        </span>
+                        <span class="b_des">货币平台币</span>
+                    </div>
+                    <div class="b_market_bd">
+                        <span class="b_currentPriceD">4.0072</span>
+                        <span class="b_currentPriceY">￥27.24</span>
+                    </div>
+                    <div class="b_market_footer red">
+                        -0.11%
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- 行情展示 -->
+    <script src="../script/tools/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.b_swiper', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.b_swiper_pagination',
+                clickable: false,
+            },
+        });
+    </script>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/swiper.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+
+<script>
+    apiready = function(){
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+        marketClick();
+        imgClik();
+    }
+        const marketClick = () => {
+            $('.b_item').on('click',function(){
+                let id = $(this).data('index');
+                openDetail(id);
+            })
+        }
+        const openDetail = (id) => {
+            api.openWin({
+                name: 'b_market_detail',
+                url: 'b_market_detail.html',
+                bounces: false,
+                pageParam: {id},
+            });
+        }
+
+        const imgClik = () => {
+            $('.swiper-slide').on('click',function(){
+                let id = $(this).data('index');
+                api.openWin({
+                    name: 'b_kownledge',
+                    url: 'b_kownledge.html',
+                    pageParam: {id}
+                });
+            })
+        }
+</script>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>底部导航</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        footer {
+            position: fixed;
+            width: 100%;
+            height: 54px;
+            background-color: #3a4a5a;
+            color:#ccc;
+            bottom: 0;
+            left: 0;
+        }
+        footer>div {
+            width: 25%;
+            height: 100%;
+            text-align: center;
+            line-height: 20px;
+            padding-top: 7px;
+        }
+        footer> i {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+        }
+        footer>div.work >h5 {
+            color:#f79604;
+        }   
+        footer>div.work > i{
+            color:#f79604;
+        } 
+    </style>
+</head>
+
+<body>
+    <footer class="b_flex">
+        <div class="b_market work">
+            <i class=" fa fa-area-chart " tapmode></i>
+            <h5>首页</h5>
+        </div>
+        <div class="b_news  ">
+            <i class="fa fa-newspaper-o" tapmode></i>
+            <h5>资讯</h5>
+        </div>
+        <div class="b_mine ">
+                <i class="fa fa-commenting-o " tapmode></i>
+                <h5>社区</h5>
+            </div>
+        <div class="b_mine ">
+            <i class="fa fa-user-circle-o " tapmode></i>
+            <h5>我的</h5>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+        b_getNowTime();// 测试，待会要删---------------------------
+        openB_Fg();
+        ClickFooter();
+    };
+
+    const openB_Fg = () => {
+        let footerHi = $api.offset($api.dom('footer')).h;
+        console.log(JSON.stringify(footerHi));
+        
+        api.openFrameGroup({
+            name: 'b_fg',
+            scrollEnabled: false,
+            rect: {
+                x:0,
+                y:0,
+                w:'auto',
+                marginBottom:footerHi,
+            },
+            index: 0,
+            frames: [{
+                name: 'b_market_fm', 
+                url: 'b_market_fm.html'
+            },{
+                name: 'b_news_fm', 
+                url: 'b_news_fm.html'
+            },{
+                name: 'b_community_fm', 
+                url: 'b_community_fm.html'
+            },{
+                name: 'b_user_fm', 
+                url: 'b_user_fm.html'
+            }]
+        }, function(ret, err){
+            var name  = ret.name;
+            var index = ret.index;
+        });
+    }
+    const  ClickFooter =  () => {
+        $('footer>div').on('click',function () {
+            let index = $(this).index();
+            $(this).addClass('work').siblings('div').removeClass('work');
+            api.setFrameGroupIndex({
+                name: 'b_fg',
+                index: index,
+                scroll: true
+            });
+        })
+    }
+</script>
+
+
+</html>

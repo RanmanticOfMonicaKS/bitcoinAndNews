@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+
+       .user_info_box {
+           position: relative;
+           line-height: 200px;
+           height: 200px;
+           background-color: #020202;
+           border-radius: 5px;
+           margin-bottom: 30px;
+       }
+       img {
+           display: inline-block;
+           width: 80px;
+           height: 80px;
+       }
+       .user_info_box_r {
+           width: calc(100% - 120px);
+
+       }
+       .user_info_box_l {
+           width: 120px;
+           height: 100%;
+           line-height: 120px;
+           padding-top: 40px;
+           padding-left: 20px;
+           box-sizing: border-box;
+       }
+       .wrap {
+           width: 100%;
+           display: inline-block;
+           text-align: left;
+           padding-left: 20px;
+           height: 100px;
+           line-height: 40px;
+       }
+       .b_uname > span {
+           font-size: 20px;
+       }
+       .b_uqianming {
+           color:#ccc;
+       }
+       .b_uqianming i {
+           margin-right: 5px;
+           color:#f79604;
+       }
+
+       /* 底部编码 */
+       .bot_num {
+           position: absolute;
+           bottom: 10px;
+           right: 10px;
+           color:#f79604;
+           font-size: 12px;
+           line-height: normal;
+           font-weight: 700;
+       }
+
+
+       .user_item {
+           position: relative;
+           margin-bottom: 5px;
+           background-color: #020202;
+           padding-left: 10px;
+           height: 50px;
+           line-height: 50px;
+           border-radius: 3px;
+       }
+       .fa {
+        margin-right: 10px;       
+           color:transparent;
+           background-clip: text;
+           -webkit-background-clip: text;
+       }
+       .fa-users {
+        background-image: linear-gradient(to bottom, #fff, yellowgreen);
+
+       }
+       .fa-heart {
+          
+           background-image: linear-gradient(to bottom, #fff, deeppink);
+       }
+       .fa-file-text {
+        background-image: linear-gradient(to bottom, #fff, blue);
+
+       }
+       .fa-reply {
+        background-image: linear-gradient(to bottom, #fff, orange);
+
+       }
+       .fa-chevron-right {
+           position: absolute;
+           right: 20px;
+           top: 17px;
+           color:#f79604;
+
+       }
+    </style>
+</head>
+<body>
+        <div class="header">
+                <div class="title">
+                    个人中心
+                </div>
+        </div>
+        <ul class="main">
+            <div class="user_info_box">
+                <div class="bot_num">
+                    5312903
+                </div>
+                <div class="user_info_box_l b_left">
+                    <img src="../image/b_user_img.jpeg" alt="">
+                </div>
+                <div class="user_info_box_r b_right">
+                    <div class="wrap">
+                            <div class="b_uname"><span>用户1232</span></div>
+                            <div class="b_uqianming">
+                                <i class="fa fa-bullhorn "></i>
+                                <span>科技改变世界</span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="user_item_box">
+                <li class="user_item" tapmode data-url="b_my_shoucang">
+                    <i class="fa fa-heart"></i><span>我的收藏</span><i class="fa fa-chevron-right "></i>
+                </li>
+                <li class="user_item" tapmode data-url="b_my_community">
+                    <i class="fa fa-users"></i><span>我的社区</span><i class="fa fa-chevron-right "></i>
+                </li>
+                <li class="user_item" tapmode data-url="b_my_fankui">
+                    <i class="fa fa-file-text "></i><span>意见反馈</span><i class="fa fa-chevron-right "></i>
+                </li>
+                <li class="user_item" tapmode data-url="b_login">
+                    <i class="fa fa-reply "></i><span>切换用户</span><i class="fa fa-chevron-right "></i>
+                </li>
+            </ul>
+        </div>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+        apiready = function(){
+            $api.fixStatusBar($api.dom('.header'));
+            fixHeight();
+            userMenuClick();
+        }
+            const userMenuClick =() =>{
+                $('.user_item').on('click',function(){
+                    let url = $(this).data('url');
+                    let b_uInfo = $api.getStorage('b_uInfo') || {};
+                    if(!b_uInfo.b_uname && url !== 'b_login') {
+                        api.confirm({
+                            title: '您还没有登录',
+                            msg: '是否立即登录',
+                            buttons:['确定', '取消']
+                        },function(ret,err){
+                            if(ret.buttonIndex == 1){
+                                api.openWin({
+                                    name: 'b_login',
+                                    url: 'b_login.html',
+                                    bounces: false,
+                                    pageParam: {key : 'value'}
+                                });
+                            }
+                        });
+                    } else {
+                        api.openWin({
+                            name: url,
+                            url: url +'.html',
+                            bounces: false,
+                            pageParam: {key : 'value'}
+                        });
+                    }
+                   
+                })
+            }
+    </script>
+
+</html>

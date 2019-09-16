@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>意见反馈</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        textarea {
+            width: 100%;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding-left: 20px;
+            padding-top: 10px;
+        }
+
+        .fankui_btn {
+            position: absolute;
+            left: 10%;
+            bottom: 100px;
+            width: 80%;
+            height: 50px;
+            background-color: #f79604;
+            color:#fff;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .hd {
+            color:#fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">
+            意见与反馈
+            <i class="fa fa-arrow-left " tapmode onclick="api.closeWin();"></i>
+        </div>
+    </div>
+    <div class="main">
+        <div class="hd">您的意见和反馈，有助于我们给您提供更好的应用体验</div>
+        <textarea name="" id="" cols="30" rows="10" placeholder="请输入您的意见和建议"></textarea>
+        <div class="fankui_btn" tapmode onclick="submitFankui();">
+            提交
+        </div>
+    </div>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function () {
+        api.parseTapmode();
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+
+    }
+    const submitFankui =async () => {
+        let fankuiCon = $('textarea').val();
+        let userId = ($api.getStorage('b_uInfo') || {})['id'];
+        console.log(JSON.stringify(fankuiCon) + '===' + JSON.stringify(userId));
+        let url = b_url + 'bitcoin/b_fankui.bq';
+        data = {
+            body: {
+                tbname: 'b_fankui_tb',
+                userId,
+                fankuiCon,
+            }
+        }
+        try {
+            let res  =await b_ajax(url,data);
+            console.log(JSON.stringify(res));
+            if(res.status == 1) {
+                api.toast({
+                    msg: '感谢您的反馈~ 我们会即使更进..',
+                    duration: 2000,
+                    location: 'bottom'
+                });
+            } else {
+                api.toast({
+                    msg: '网络出错~',
+                    duration: 2000,
+                    location: 'bottom'
+                });
+            }
+            
+        } catch (error) {
+            api.toast({
+                msg: '网络出错~',
+                duration: 2000,
+                location: 'bottom'
+            });
+        }
+
+    }
+</script>
+
+</html>

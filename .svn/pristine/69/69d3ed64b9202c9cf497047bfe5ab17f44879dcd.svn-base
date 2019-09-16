@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>登录页</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        .aui-list {
+            width: 90%;
+            left: 5%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #202020;
+        }
+
+        .aui-btn {
+            background-color: #f79604;
+        }
+
+        .b_register {
+            text-align: center;
+        }
+
+        .aui-list {
+            background-image: url();
+        }
+
+        .aui-list-item.last {
+            background-image: url();
+        }
+        .b_login {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        input {
+            color:#eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">
+            <span class="tip">登录</span>
+            <i class="fa fa-arrow-left " tapmode onclick="api.closeWin();"></i>
+        </div>
+    </div>
+    <div class="main">
+        <ul class="aui-list aui-form-list">
+            <li class="aui-list-item">
+                <input type="text" placeholder="Name" class="b_uname">
+
+            </li>
+            <li class="aui-list-item">
+                <input type="password" placeholder="Password" class="b_upwd">
+            </li>
+            <li class="aui-list-item last">
+                <div class="aui-list-item-inner aui-list-item-center aui-list-item-btn">
+                    <div class="aui-btn b_login b_login" tapmode data-type='1' onclick="b_login();">登录</div>
+                    <div class="b_register b_login" tapmode data-type='2' onclick="b_register();">注册</div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function () {
+        api.parseTapmode();
+        $api.fixStatusBar($api.dom('.header'));
+        api.sendEvent({
+            name: 'refresh',
+            extra: {key:' value'}
+        });
+    }
+
+    const b_login =async () => {
+        let b_uname = $('.b_uname').val();
+        let b_upwd = $('.b_uname').val();
+        if(!b_uname) {
+            return api.toast({
+                msg: '账号不能为空',
+                duration: 2000,
+                location: 'bottom'
+            });
+        }
+        if(!b_upwd) {
+            return api.toast({
+                msg: '密码不能为空',
+                duration: 2000,
+                location: 'bottom'
+            });
+        }
+        console.log('1111111111');
+
+        let url = b_url + 'bitcoin/b_login.bq';
+        let data = {
+            body: {
+                bq_param: {
+                    b_uname,
+                    b_upwd,
+                }
+            }
+        }
+
+        try {
+            let res = await b_ajax(url, data);
+        console.log(JSON.stringify(res));
+        if(res.bq_param && res.bq_param.count > 0) {
+            let b_uInfo = res.bq_param.records[0];
+            $api.setStorage('b_uInfo', b_uInfo);
+            api.toast({
+                msg: '登录成功',
+                duration: 2000,
+                location: 'bottom'
+            });
+            setTimeout(() => {
+                api.closeToWin({
+                    name: 'root',
+                    animation: {
+                        type: 'flip',
+                        subType: 'from_bottom',
+                        duration: 500
+                    }
+                });
+            }, 500);
+            api.sendEvent({
+                name: 'refresh',
+                extra: {key:' value'}
+            });
+        } else {
+            api.toast({
+                msg: '账户或密码出错',
+                duration: 2000,
+                location: 'bottom'
+            });
+        }
+
+        } catch (error) {
+            api.alert({
+                title: '网络出错~', 
+                msg: '请您检查网络稍后重试...'
+            });
+        }
+    }
+
+
+    const b_register =async () => {
+        let b_uname = $('.b_uname').val();
+        let b_upwd = $('.b_uname').val();
+
+        console.log('22222222222222222222');
+
+        // 注册
+        let url = b_url + 'bitcoin/b_addUser.bq';
+        let data = {
+            body: {
+                tbname: 'b_u_tb',
+                b_uname,
+                b_upwd,
+            }
+        }
+        try {
+        let res = await b_ajax(url, data);
+
+            if (res.status === 1) {
+            api.toast({
+                msg: '注册成功，可立即登录',
+                duration: 2000,
+                location: 'bottom'
+            });
+
+        } else {
+            api.toast({
+                msg: '注册失败...',
+                duration: 2000,
+                location: 'bottom'
+            });
+        }
+
+        } catch (error) {
+            api.alert({
+                title: '网络出错', 
+                msg: '请检查网络后再试...'
+            });
+        }
+    }
+</script>
+
+</html>

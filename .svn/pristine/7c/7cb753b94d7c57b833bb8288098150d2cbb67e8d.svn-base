@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>详情页</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+    .b_data_box {
+        height: 120px;
+        background-color: #020202;
+        font-size: 12px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .b_data_box li {
+        width: 20%;
+        height: 100%;
+        
+    }
+    .b_data_box li.first {
+        padding-top: 20px;
+        
+    }
+    .b_data_t {
+        line-height: 30px;
+        border-bottom: 1px solid #666;
+    }
+    .b_data_t  span {
+        margin-right: 10px;
+        padding-left: 10px;
+    }
+    .b_data_b {
+        line-height: 20px;
+        text-align: center;
+    }
+    .b_data_t,
+   .b_data_b {
+        width: 100%;
+        height: 50%;
+    }
+    .b_data_b li {
+        width: 25%;
+        height: 100%;
+    }
+
+    .b_hightestPrice {
+        color:tomato;
+        font-size: 18px;
+    }
+    .b_risePrice {
+        color:pink;
+    }
+    .red {
+        color:pink;
+    }
+    .chartline_tab {
+        margin-bottom: 10px;
+    }
+    .chartline_tab span {
+        padding: 3px 5px;
+        font-size: 18px;
+        color:#fff;
+        font-weight: 700;
+        background-color: #020202;
+        margin-right: 20px;
+        border-radius: 2px;
+    }
+    .chartline_tab span.active {
+        border: 1px solid #f79604;
+    }
+    .chartline_img {
+        margin-bottom: 10px;
+    }
+    img {
+        width: 100%;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+        <div class="header">
+                <div class="title">
+                    行情详情
+                    <i class="fa fa-arrow-left " tapmode onclick="api.closeWin();"></i>
+                </div>
+        </div>
+        <div class="main">
+            <!-- <span class="b_title">
+                详细数据
+            </span>
+            <div class="b_data_box ">
+                <div class="b_data_t">
+                   <div>
+                       <span>Bitcoin</span>
+                        <span>比特币</span>
+                        <span>今日行情价格</span>
+                    </div>
+                   <div>
+                       <span class="b_hightestPrice">￥71334.22</span>
+                       <span class="b_risePrice">-￥1729.738</span>
+                       <span class="b_risePrecent">-2.37%</span>
+                   </div>
+                </div>
+                <ul class="b_data_b b_flex">
+                    <li>
+                        <div class="b_data_r-l">
+                            <i class="fa fa-arrow-circle-up red"></i>                     
+                        </div>
+                        <div class="b_data_r-r">
+                            <span>24H最低价</span>
+                            <span class="lowestPrice red">￥71081.82</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="b_data_r-l">
+                            <i class="fa fa-arrow-circle-down red"></i>
+                        </div>
+                        <div class="b_data_r-r">
+                            <span>24H最高价</span>
+                            <span class="red hightestPrice">￥73379.11</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="b_data_r-l">
+                            <i class="fa fa-database red"></i>
+                        </div>
+                        <div class="b_data_r-r">
+                            <span>24H成交额</span>
+                            <span class="red volum">￥123.16亿</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="b_data_r-l">
+                            <i class="fa fa-diamond red"></i>
+                        </div>
+                        <div class="b_data_r-r">
+                            <span>市值</span>
+                            <span class="red worth">￥12949.01亿</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <span class="b_title">
+                走势图
+            </span>
+            <div class="chartline_box">
+                    <div class="chartline_tab ">
+                        <span class="chartline_item active">24H</span>
+                        <span class="chartline_item">1W</span>
+                        <span class="chartline_item">1M</span>
+                        <span class="chartline_item">1Y</span>
+                        <span class="chartline_item">All</span>
+                    </div>
+                    <div class="chartline_img">
+                        <img src="../image/b1_chartline1.png" alt="">
+                    </div>
+                    <span class="b_title">
+                            占比
+                    </span>
+                    <div class="precent_img">
+                        <img src="../image/b1_precentimg1.png" alt="">
+                    </div>
+            </div> -->
+        </div>
+</body>
+<script id="main" type="text/template">
+    <span class="b_title">
+            详细数据
+        </span>
+        <div class="b_data_box ">
+            <div class="b_data_t">
+               <div>
+                   <span> {{= it.bname}} </span>
+                    <span>{{= it.bchinesename}} </span>
+                    <span>今日行情价格</span>
+                </div>
+               <div>
+                   <span class="b_hightestPrice">{{= it.bcurrentprice}} </span>
+                   <span class="b_risePrice">{{= it.brisenum}} </span>
+                   <span class="b_risePrecent">{{= it.briseprecent}} </span>
+               </div>
+            </div>
+            <ul class="b_data_b b_flex">
+                <li>
+                    <div class="b_data_r-l">
+                        <i class="fa fa-arrow-circle-up red"></i>                     
+                    </div>
+                    <div class="b_data_r-r">
+                        <div>24H最低价</div>
+                        <div class="lowestPrice red">{{= it.blowestprice}} </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="b_data_r-l">
+                        <i class="fa fa-arrow-circle-down red"></i>
+                    </div>
+                    <div class="b_data_r-r">
+                        <div>24H最高价</div>
+                        <div class="red hightestPrice">{{= it.bhightestprice}} </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="b_data_r-l">
+                        <i class="fa fa-database red"></i>
+                    </div>
+                    <div class="b_data_r-r">
+                        <div>24H成交额</div>
+                        <div class="red volum">{{= it.bdealnum}} </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="b_data_r-l">
+                        <i class="fa fa-diamond red"></i>
+                    </div>
+                    <div class="b_data_r-r">
+                        <div>市值</div>
+                        <div class="red worth">{{= it.bworth}} </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <span class="b_title">
+            走势图
+        </span>
+        <div class="chartline_box">
+                <div class="chartline_tab ">
+                    <span class="chartline_item active">24H</span>
+                    <span class="chartline_item">1W</span>
+                    <span class="chartline_item">1M</span>
+                    <span class="chartline_item">1Y</span>
+                    <span class="chartline_item">All</span>
+                </div>
+                <div class="chartline_img">
+                    <img src="../image/b{{= it.id}}_chartline1.png" alt="">
+                </div>
+                <span class="b_title">
+                        占比
+                </span>
+                <div class="precent_img">
+                    <img src="../image/b{{= it.id}}_precentimg1.png" alt="">
+                </div>
+        </div>
+
+</script>
+<script src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/swiper.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function(){
+        api.parseTapmode();
+        $api.fixStatusBar($api.dom('.header'));
+        fixHeight();
+        market_temp();
+    }
+    const market_temp =() => {
+        let id = api.pageParam.id;
+        console.log(JSON.stringify(id));
+        let url  = b_url + 'bitcoin/getBitcoin.bq';
+        let data = {
+            body:{
+                bq_param:{
+                    id,
+                }
+            }
+        }
+        b_data_page(url,data);
+    }
+</script>
+</html>

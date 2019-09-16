@@ -1,0 +1,60 @@
+ <widget id="A6013560315271"  version="0.0.1">
+
+    <name>币圈资讯</name>
+
+    <description>
+
+        an app about blockchain and bitcoin for news and market
+
+    </description>
+
+    <author>
+
+        kongsheng
+
+    </author>
+
+    <content src="index.html" />
+
+    <access origin="*" />
+
+    <preference name="pageBounce" value="false"/>
+
+	<preference name="appBackground" value="rgba(0,0,0,1)"/>
+
+	<preference name="windowBackground" value="rgba(0,0,0,1)"/>
+
+	<preference name="frameBackgroundColor" value="rgba(0,0,0,1)"/>
+
+	<preference name="hScrollBarEnabled" value="false"/>
+
+	<preference name="vScrollBarEnabled" value="false"/>
+
+	<preference name="autoLaunch" value="true"/>
+
+	<preference name="fullScreen" value="false"/>
+
+	<preference name="smartUpdate" value="false" />
+
+	<preference name="debug" value="true"/>
+
+	<preference name="statusBarAppearance" value="true"/>
+
+	<permission name="readPhoneState" />
+
+	<permission name="camera" />
+
+	<permission name="record" />
+
+	<permission name="location" />
+
+	<permission name="fileSystem" />
+
+	<permission name="internet" />
+
+	<permission name="bootCompleted" />
+
+	<permission name="hardware" />
+
+</widget>
+

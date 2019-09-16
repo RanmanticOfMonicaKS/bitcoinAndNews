@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>底部导航</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        footer {
+            position: fixed;
+            width: 100%;
+            height: 54px;
+            background-color: #3a4a5a;
+            color:#ccc;
+            bottom: 0;
+            left: 0;
+        }
+        footer>div {
+            width: 33.3%;
+            height: 100%;
+            text-align: center;
+            line-height: 20px;
+            padding-top: 7px;
+        }
+        footer> i {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+        }
+        footer>div.active >h5 {
+            color:#f79604;
+        }   
+        footer>div.active > i{
+            color:#f79604;
+        } 
+    </style>
+</head>
+
+<body>
+    <footer class="b_flex">
+        <div class="b_market active">
+            <i class=" fa fa-area-chart "></i>
+            <h5>行情</h5>
+        </div>
+        <div class="b_news  ">
+            <i class="fa fa-newspaper-o"></i>
+            <h5>资讯</h5>
+        </div>
+        <div class="b_mine ">
+                <i class="fa fa-commenting-o "></i>
+                <h5>社区</h5>
+            </div>
+        <div class="b_mine ">
+            <i class="fa fa-user-circle-o "></i>
+            <h5>我的</h5>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/b_common.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        
+
+    };
+
+    const openB_Fg = () => {
+        api.openFrameGroup({
+            name: 'b_fg',
+            scrollEnabled: false,
+            rect: {
+                x:0,
+                y:0,
+                w:'auto',
+                h:'auto'
+            },
+            index: 0,
+            frames: [{
+                name: 'frame1_name', 
+                url: 'frame1_url'
+            },{
+                name: 'frame2_name', 
+                url: 'frame2_url'
+            }]
+        }, function(ret, err){
+            var name  = ret.name;
+            var index = ret.index;
+        });
+    }
+</script>
+
+</html>

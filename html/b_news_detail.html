@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>新闻详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/b_common.css">
+    <style>
+        .newsTitle {
+            font-size: 18px;
+            color:#eee;
+            line-height: 20px;
+            margin-bottom: 20px;
+        }
+        .publishT,
+        .publishN {
+            border: 1px solid #f79604;
+            line-height: normal;
+        }
+        .main {
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            相关资讯
+            <i class="fa fa-arrow-left " tapmode onclick="api.closeWin();"></i>
+        </div>
+        <div class="main">
+            
+        </div>
+</div>
+</body>
+<script id="main" type="text/template">
+    <div class="newsTitle"> {{= it.b_news_title}} </div>
+    <div class="newsSubTitle clearfix">
+        <span class="publishT b_left b_title">{{= it.b_news_publish_time}} </span>
+        <span class="publishN b_right b_title"> {{= it.b_news_publish_name}} </span>
+    </div>
+    <div class="newsCon">
+        {{= it.b_news_con}}
+    </div>
+</script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/tools/jquery.min.js"></script>
+<script src="../script/tools/doT.min.js"></script>
+<script src="../script/b_common.js"></script>
+<script>
+    apiready = function(){
+        console.log(JSON.stringify(api.pageParam));
+        
+        $api.fixStatusBar($api.dom('.header'));
+            fixHeight();
+            newsDetailTemp();
+
+    }
+    const newsDetailTemp = () => {
+        let id = api.pageParam.id;
+        console.log(JSON.stringify(id));
+        let url = b_url + 'bitcoin/getNews.bq';
+        let data = {
+            body:{
+                bq_param:{
+                    id
+                }
+            }
+        }
+        b_data_page(url,data);
+    }
+</script>
+</html>

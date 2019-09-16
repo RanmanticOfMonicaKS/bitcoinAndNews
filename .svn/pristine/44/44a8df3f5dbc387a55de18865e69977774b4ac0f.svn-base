@@ -1,0 +1,31 @@
+// 1. 处理回退按钮监听逻辑，避免退回root屏
+const fixRootBack = () => {
+    let flag = false ;
+    return api.addEventListener({
+        name: 'keyback'
+    }, function(ret, err){
+        if(!flag) {
+            api.toast({
+                msg: api.appName+': 3s内再次点击可退出应用...',
+                duration: 2000,
+                location: 'bottom'
+            });
+            flag = true;
+            setTimeout(() => {
+                flag = false;
+            }, 2500);
+        } else {
+            api.closeWidget({
+                slient:true
+            });
+        }
+    });
+}
+
+// 2. 修复页面高度 
+
+const fixHeight = () => {
+    let headerHi = $api.offset($api.dom('.header')).h;
+    console.log(JSON.stringify(headerHi));
+    $('.main').css({ "height":api.frameHeight - headerHi });
+}
